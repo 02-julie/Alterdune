@@ -1,0 +1,6 @@
+Potion;HEAL;15;3
+Snack;HEAL;8;5
+SuperPotion;HEAL;30;1
+RefutDeLaMort;DEATHCOUNTER;1;1
+PowerPotion;ATK;1.5;2
+DefensePotion;DEF;0.5;2

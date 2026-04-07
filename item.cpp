@@ -1,5 +1,5 @@
 #include "item.h"
-Item::Item(int id,string nom,string descriptif,string effet, int quantite)
+Item::Item(int id,string nom,string descriptif,double effet, int quantite)
 {
     this->id=id;
     this->nom=nom;
@@ -19,7 +19,7 @@ string Item::get_descriptif()
 {
     return this->descriptif;
 }
-string Item::get_effet()
+double Item::get_effet()
 {
     return this->effet;
 }
