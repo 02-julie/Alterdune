@@ -1,7 +1,8 @@
 #include "main.h"
 #include "action.h"
+#include "statistique.h"
 
-class Monstre{
+class Monstre:public Statistique{
     private:
         int id;
         string nom;
@@ -11,6 +12,7 @@ class Monstre{
         bool resultat_combat;
     public:
         Monstre(string nom = "", string type = "", string mercy = "", Action* actions = nullptr, bool resultat_combat = false);
+        Monstre();
         void afficher();
         void afficherActions();
         string getNom();

@@ -1,11 +1,19 @@
 #include "monstre.h"
 
-Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat){
+Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat):Statistique( hp,  attaque, defense){
     this->nom = nom;
     this->type = type;
     this->mercy = mercy;
     this->actions = actions;
     this->resultat_combat = resultat_combat;
+}
+
+Monstre::Monstre(): Statistique(){
+    try {
+
+    }catch(...){
+        cout<<"Erreur lors de la création du monstre"<<endl;
+    }
 }
 
 void Monstre::afficher(){

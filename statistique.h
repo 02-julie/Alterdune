@@ -10,7 +10,7 @@ class Statistique
         int attaque;
         int defense;
     public:
-        Statistique::Statistique(int hp, int attaque,int defense);
+        Statistique::Statistique(int hp=0, int attaque=0,int defense=0);
         int Statistique::get_hp();
         int Statistique::get_defense();
         int Statistique::get_attaque();

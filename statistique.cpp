@@ -6,6 +6,7 @@ this->hp=hp;
 this->attaque=attaque;
 this->defense=defense;
 }
+
 int Statistique::get_hp()
 {
     return hp;
