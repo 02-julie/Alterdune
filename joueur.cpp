@@ -80,8 +80,10 @@ void Joueur::Afficher()
 {
     cout<<"Nom: "<<nom<<"\nItems: "<<endl;
     Statistique::Afficher();
+    
     for(int i=0;i<nb_items;i++)
     {
+        cout<<"\nItems:"<<endl;
         items[i].Afficher();
     }
     

@@ -16,11 +16,42 @@ int main(){
     Action a8("20/20!","bonneNote",20,"");
     Action a9("Merci ChatGPT","triche",20,"");
     vector<Action> actions= {a1,a2,a3,a4,a5,a6,a7,a8,a9};
-    
-    Joueur j("julie");
-    j.Afficher();
 
-    Monstre monstre = Monstre();
-    monstre.afficher();
-    return 0;
-};
+    
+    int a=0;
+    while(a!=3)
+    {
+
+        cout<<"taper 1 pour creer un joueur et afficher ses stats et ses items, taper 2 pour creer un monstre et l'afficher, taper 3 pour sortir"<<endl;
+        cin>>a;
+        Joueur* j = nullptr; 
+        switch (a) {
+            case 1: { 
+                cout << "Entrer le nom du joueur: ";
+                string nom;
+                cin >> nom;
+                j = new Joueur(nom); 
+                j->Afficher();
+                break;
+            } 
+
+
+            case 2: {
+                Monstre monstre; 
+                monstre.afficher();
+                break;
+            }
+            case 3:
+                cout<<"sortie du jeu";
+                break;
+
+            default:
+                break;
+        }
+    }
+        
+        
+
+    
+        return 0;
+    };
