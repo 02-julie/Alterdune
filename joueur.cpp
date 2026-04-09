@@ -1,4 +1,4 @@
-#include "joueur.h"
+#include "main.h"
 
 Joueur::Joueur(string nom,Item* items,int nb_items):Statistique( hp,  attaque, defense)
 {

@@ -1,5 +1,18 @@
-#include "main.h"
+#pragma once
+
+#include <iostream>
+#include <string>
+#include <memory>
+#include <vector>
+#include <cstdlib>
+#include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <random>
+using  namespace std;
+
 #include "monstre.h"
+
 class Bestiaire{
     private:
         Monstre monstres[10];

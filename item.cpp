@@ -1,4 +1,5 @@
-#include "item.h"
+#include "main.h"
+
 Item::Item(int id,string nom,string descriptif,double effet, int quantite)
 {
     this->id=id;

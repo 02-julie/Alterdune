@@ -1,4 +1,4 @@
-NORMAL;illico;30;7;1;100;caresse;croquette;-;-
-MINIBOSS;troll;45;10;2;100;insulte;compliment;Snack;-
-BOSS;bowser;80;15;4;100;insulte;compliment;peach;powerup
-MINIBOSS;statistix;45;10;2;100;exoResolut;bonneNote;triche;-
+NORMAL,illico,30,7,1,100,caresse,Snack,-,-
+MINIBOSS,troll,45,10,2,100,insulte,compliment,Snack,-
+BOSS,bowser,80,15,4,100,insulte,compliment,peach,powerup
+MINIBOSS,statistix,45,10,2,100,exoResolut,bonneNote,triche,-

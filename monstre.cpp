@@ -1,4 +1,4 @@
-#include "monstre.h"
+#include "main.h"
 
 Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat):Statistique( hp,  attaque, defense){
     this->nom = nom;
@@ -10,19 +10,77 @@ Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool r
 
 Monstre::Monstre(): Statistique(){
     try {
+        ifstream fichier("monstres.csv");
+        if(!fichier.is_open()){
+            throw runtime_error("Erreur : impossible d'ouvrir le fichier");
+        }
 
-    }catch(...){
-        cout<<"Erreur lors de la création du monstre"<<endl;
+        int nombreDeLignes = 0;
+        string ligneTemp;
+        
+        while (getline(fichier, ligneTemp)) {
+            if (!ligneTemp.empty()) {
+                nombreDeLignes++;
+            }
+        }
+
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> distrib(1, nombreDeLignes);
+
+        int ligneCible = distrib(gen);
+        fichier.clear();
+        fichier.seekg(0);
+
+        string ligneChoisie;
+        int ligneActuelle = 0;
+
+        while (getline(fichier, ligneTemp)) {
+            if (!ligneTemp.empty()) {
+                ligneActuelle++;
+                if (ligneActuelle == ligneCible) {
+                    ligneChoisie = ligneTemp; 
+                    break;
+                }
+            }
+        }
+        fichier.close();
+
+        stringstream ss(ligneChoisie);
+        string nom, type, mercy, hp_str, attaque_str, defense_str;
+
+        getline(ss, type, ',');
+        getline(ss, nom, ',');
+        getline(ss, mercy, ',');
+        getline(ss, hp_str, ',');
+        getline(ss, attaque_str, ',');
+        getline(ss, defense_str, ',');
+        
+        try {
+            Statistique::set_hp(stoi(hp_str));
+            Statistique::set_attaque(stoi(attaque_str));
+            Statistique::set_defense(stoi(defense_str));
+        }
+        catch (const exception& e) {
+            throw invalid_argument("Erreur de conversion sur le monstre : " + nom);
+        }
+
+        this->nom = nom;
+        this->type = type;
+        this->mercy = mercy;
+    }
+    catch(const exception& e){
+        cerr << e.what() << endl;
     }
 }
 
 void Monstre::afficher(){
     cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<endl;
     if(resultat_combat){
-        cout<<"L'ennemie a été tué !!"<<endl;
+        cout<<"L'ennemie a ete tue !!"<<endl;
     }
     else{
-        cout<<"L'ennemie a été épargné "<<endl;
+        cout<<"L'ennemie a ete epargne "<<endl;
     }
 }
 

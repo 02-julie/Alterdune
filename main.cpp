@@ -1,5 +1,7 @@
 #include "main.h"
-#include "action.cpp"
+
 int main(){
+    Monstre monstre = Monstre();
+    monstre.afficher();
     return 0;
 };

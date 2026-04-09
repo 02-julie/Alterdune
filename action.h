@@ -1,4 +1,15 @@
-#include "main.h"
+#pragma once
+
+#include <iostream>
+#include <string>
+#include <memory>
+#include <vector>
+#include <cstdlib>
+#include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <random>
+using  namespace std;
 
 class Action {
     private:

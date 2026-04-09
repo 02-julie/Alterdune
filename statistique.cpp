@@ -1,4 +1,4 @@
-#include "statistique.h"
+#include "main.h"
 
 Statistique::Statistique(int hp, int attaque,int defense)
 {

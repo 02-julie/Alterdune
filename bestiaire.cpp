@@ -1,4 +1,7 @@
-#include "bestiaire.h"
+#include "main.h"
+
+
+
 
 Bestiaire::Bestiaire(Monstre monstres[10], int nb_tue, int nb_epargne, int nb_victoire){
     for(int i = 0; i < 10; i++){
