@@ -1,4 +1,4 @@
-#include "main.h"
+
 #include "action.h"
 
 Action::Action(string texte_drole, string nom, int effet_sur_mercy, string autre_effet) {

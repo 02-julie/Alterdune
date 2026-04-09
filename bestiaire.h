@@ -1,5 +1,10 @@
-#include "main.h"
+#pragma once
+#include <iostream>
+#include <string>
+#include <memory>
 #include "monstre.h"
+using  namespace std;
+
 class Bestiaire{
     private:
         Monstre monstres[10];

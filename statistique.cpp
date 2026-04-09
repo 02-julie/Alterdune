@@ -32,5 +32,5 @@ void Statistique::set_defense(int defense)
 }
 void Statistique::Afficher()
 {
-    cout<<"HP: "<<hp<<"\nAttaque: "<<attaque<<"\nDefense: "<<defense;
+    cout<<"HP: "<<hp<<"\nAttaque: "<<attaque<<"\nDefense: "<<defense<<endl;
 }

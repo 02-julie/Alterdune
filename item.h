@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <memory>
@@ -12,14 +13,13 @@ class Item
         int quantite;
   
     public:
-        Item::Item(int id,string nom,string descriptif,double effet, int quantite);
-        Item::Item();
-        int Item::get_id() ;
-        string Item::get_nom();
-        string Item::get_descriptif();
-        double Item::get_effet();
-        int Item::get_quantite();
-        void Item::set_id(int quantite);
-        void Item::Afficher();
+        Item(int id=0,string nom="",string descriptif="",double effet=0.0, int quantite=0);
+        int get_id() ;
+        string get_nom();
+        string get_descriptif();
+        double get_effet();
+        int get_quantite();
+        void set_id(int quantite);
+        void Afficher();
 
 };

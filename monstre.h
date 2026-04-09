@@ -1,5 +1,10 @@
-#include "main.h"
+#pragma once
+#include <iostream>
+#include <string>
+#include <memory>
+using  namespace std;
 #include "action.h"
+
 
 class Monstre{
     private:

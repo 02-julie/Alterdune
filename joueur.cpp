@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-Joueur::Joueur(string nom,Item* items,int nb_items):Statistique( hp,  attaque, defense)
+Joueur::Joueur(string nom):Statistique( hp=100,  attaque=5, defense=5)
 {
     this->nom=nom;
-    this->nb_items=nb_items;
+    this->nb_items=6;
     this->items=new Item[nb_items];
     int compteur=0;
     ifstream fichier("items.csv");
@@ -20,36 +20,31 @@ Joueur::Joueur(string nom,Item* items,int nb_items):Statistique( hp,  attaque, d
         string descriptif;
         string streffet; 
         string strquantite;
-        double effet;int quantite;
+        double effet=0.0;
+        int quantite=0;
         getline(ss,nom,',');
         getline(ss,descriptif,',');
         getline(ss,streffet,',');
         getline(ss,strquantite,',');
         try
         {
-            double  effet=stod(streffet);
+            effet=stod(streffet);
+            quantite=stoi(strquantite);
+            Item it(compteur, nom, descriptif, effet, quantite);
+        
+        
+            if (compteur < this->nb_items) {
+                items[compteur] = it;
+                compteur++;
+            }
         }
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
         }
-        try
-        {
-            int quantite=stoi(strquantite);
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        }
-        Item it=Item::Item(compteur,nom,descriptif,effet,quantite);
-        items[compteur]=it;
-        compteur++;
-
-
         
         
-
-
+        
     }
 
     for(int i=0;i<nb_items;i++)

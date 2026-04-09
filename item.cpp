@@ -1,4 +1,5 @@
 #include "item.h"
+
 Item::Item(int id,string nom,string descriptif,double effet, int quantite)
 {
     this->id=id;
@@ -35,7 +36,7 @@ void Item::set_id(int quantite)
 
 void Item::Afficher()
 {
-    cout<<"nom: "<<nom<<"\nDescriptif: "<<descriptif<<"\nEffet : "<<effet<<"\nQuantité: "<<quantite;
+    cout<<"nom: "<<nom<<"\nDescriptif: "<<descriptif<<"\nEffet : "<<effet<<"\nQuantite: "<<quantite<<endl;
 }
 
 
