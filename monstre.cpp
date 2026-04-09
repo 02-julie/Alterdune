@@ -12,13 +12,8 @@ Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool r
 }
 
 void Monstre::afficher(){
-    cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<endl;
-    if(resultat_combat){
-        cout<<"L'ennemie a ete tue !!"<<endl;
-    }
-    else{
-        cout<<"L'ennemie a ete epargne "<<endl;
-    }
+    cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
+    Statistique::Afficher();
 }
 
 Monstre::Monstre(): Statistique(){

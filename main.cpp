@@ -19,10 +19,10 @@ int main(){
 
     
     int a=0;
-    while(a!=3)
+    while(a!=4)
     {
 
-        cout<<"taper 1 pour creer un joueur et afficher ses stats et ses items, taper 2 pour creer un monstre et l'afficher, taper 3 pour sortir"<<endl;
+        cout<<"Menu : \ntaper 1 pour creer un joueur et afficher ses stats et ses items\ntaper 2 pour creer un monstre et l'afficher\ntaper 3 pour afficher les actions\ntaper 4 pour sortir\n>";
         cin>>a;
         Joueur* j = nullptr; 
         switch (a) {
@@ -41,17 +41,21 @@ int main(){
                 monstre.afficher();
                 break;
             }
-            case 3:
+            case 3: {
+                cout << "Actions disponibles : \n" << endl;
+                for(int i = 0 ; i<9; i++){
+                    actions[i].afficher();
+                }
+                break;
+            }
+            case 4:
                 cout<<"sortie du jeu";
                 break;
 
             default:
                 break;
         }
-    }
+    }     
         
-        
-
-    
         return 0;
     };
