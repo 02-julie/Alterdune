@@ -19,5 +19,8 @@ int main(){
     
     Joueur j("julie");
     j.Afficher();
+
+    Monstre monstre = Monstre();
+    monstre.afficher();
     return 0;
 };

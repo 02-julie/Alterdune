@@ -4,9 +4,10 @@
 #include <memory>
 using  namespace std;
 #include "action.h"
+#include "statistique.h"
 
 
-class Monstre{
+class Monstre : public Statistique{
     private:
         int id;
         string nom;
@@ -15,7 +16,8 @@ class Monstre{
         Action* actions;
         bool resultat_combat;
     public:
-        Monstre(string nom = "", string type = "", string mercy = "", Action* actions = nullptr, bool resultat_combat = false);
+        Monstre(string nom, string type, string mercy, Action* actions, bool resultat_combat);
+        Monstre();
         void afficher();
         void afficherActions();
         string getNom();

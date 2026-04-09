@@ -12,7 +12,7 @@ class Statistique
         int attaque;
         int defense;
     public:
-        Statistique(int hp, int attaque,int defense);
+        Statistique(int hp=100, int attaque=10, int defense=10);
         int get_hp();
         int get_defense();
         int get_attaque();
