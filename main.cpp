@@ -18,11 +18,11 @@ int main(){
     vector<Action> actions= {a1,a2,a3,a4,a5,a6,a7,a8,a9};
 
     
-    int a=0;
-    while(a!=4)
+    int a=-1;
+    while(a!=0)
     {
 
-        cout<<"Menu : \ntaper 1 pour creer un joueur et afficher ses stats et ses items\ntaper 2 pour creer un monstre et l'afficher\ntaper 3 pour afficher les actions\ntaper 4 pour sortir\n>";
+        cout<<"Menu : \ntaper 1 pour creer un joueur et afficher ses stats et ses items\ntaper 2 pour creer un monstre et l'afficher\ntaper 3 pour afficher les actions\ntaper 4 pour un exemple d'affichage de combats\ntaper 0 pour sortir\n>";
         cin>>a;
         Joueur* j = nullptr; 
         switch (a) {
@@ -48,7 +48,27 @@ int main(){
                 }
                 break;
             }
-            case 4:
+            case 4: {
+                Monstre monstre;
+                Joueur joueur("Heros");
+                cout <<"\033[4m"<<joueur.get_nom() << " VS " << monstre.getNom()<<"\033[0m"<<endl;
+                cout<<"HP "<<joueur.get_nom()<<": ";
+                for(int i = 0; i<joueur.get_hp(); i++){
+                    cout<<"-";
+                }
+                cout << endl;
+                cout<<"HP "<<monstre.getNom()<<": ";
+                for(int i = 0; i<monstre.get_hp(); i++){
+                    cout<<"-";
+                }
+                cout << endl;
+                cout<<"Mercy "<<monstre.getNom()<<": "<<monstre.getMercy()<<endl;
+                cout<<"\033[1mFIGHT          ACT          ITEM          MERCY\033[0m"<<endl;
+                cout<<"(1)           (2)           (3)          (4)"<<endl;   
+                cout <<"\n" <<endl;
+                break;
+            }
+            case 0:
                 cout<<"sortie du jeu";
                 break;
 
@@ -58,4 +78,4 @@ int main(){
     }     
         
         return 0;
-    };
+};

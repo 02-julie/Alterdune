@@ -58,11 +58,11 @@ Monstre::Monstre(): Statistique(){
         string nom, type, mercy, hp_str, attaque_str, defense_str;
 
         getline(ss, type, ',');
-        getline(ss, nom, ',');
-        getline(ss, mercy, ',');
+        getline(ss, nom, ',');        
         getline(ss, hp_str, ',');
         getline(ss, attaque_str, ',');
         getline(ss, defense_str, ',');
+        getline(ss, mercy, ',');
         
         try {
             Statistique::set_hp(stoi(hp_str));
