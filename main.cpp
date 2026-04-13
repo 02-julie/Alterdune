@@ -30,37 +30,41 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
         int nbActions = 0;
         vector<string> acts;
         if(type=="NORMAL"){
-            nbActions = 1;
-            string act1;
-            getline(ss, act1, ',');
-            acts.push_back(act1);
-        }
-        else if(type=="MINIBOSS"){
             nbActions = 2;
             string act1, act2;
             getline(ss, act1, ',');
-            getline(ss, act2, ',');            
-            acts.push_back(act1);            
+            getline(ss, act2, ',');
+            acts.push_back(act1);
             acts.push_back(act2);
         }
-        else{
+        else if(type=="MINIBOSS"){
             nbActions = 3;
             string act1, act2, act3;
             getline(ss, act1, ',');
             getline(ss, act2, ',');
             getline(ss, act3, ',');            
             acts.push_back(act1);            
+            acts.push_back(act2);
+            acts.push_back(act3);
+        }
+        else{
+            nbActions = 4;
+            string act1, act2, act3, act4;
+            getline(ss, act1, ',');
+            getline(ss, act2, ',');
+            getline(ss, act3, ','); 
+            getline(ss, act4, ',');           
+            acts.push_back(act1);            
             acts.push_back(act2);            
             acts.push_back(act3);
+            acts.push_back(act4);
         }        
 
         Monstre m(nom, type, mercy, false);
-        Action* actions = new Action[nbActions];
-        m.setActions(actions);
         for(int i = 0; i<nbActions; i++){
             for(int j = 0; j<vectActions.size(); j++){
                 if(vectActions[j].getNom()==acts[i]){
-                    m.setActions(i, vectActions[j]);
+                    m.setActions(vectActions[j]);
                 }
             }
         }
@@ -86,7 +90,7 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
 int main(){
     
     Action a1("ilicco est content","caresse",20,"");
-    Action a2("Bravo!Tu as trouvé son point faible!","snack",20,"");
+    Action a2("Bravo Tu as trouvé son point faible ","snack",20,"");
     Action a3("@&#$!","insulte",20,"");
     Action a4("Fayot!","compliment",20,"");
     Action a5("Mario est en colère attention!","peach",20,"");
@@ -99,6 +103,7 @@ int main(){
     vector<Monstre> monstres = CreationMonstres(actions);
 
     monstres[0].afficher();
+    monstres[0].afficherActions();
 
     int a=-1;
     while(a!=0)

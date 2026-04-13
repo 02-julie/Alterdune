@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <vector>
 using  namespace std;
 #include "action.h"
 #include "statistique.h"
@@ -13,7 +14,7 @@ class Monstre : public Statistique{
         string nom;
         string type;
         string mercy;
-        Action* actions;
+        vector<Action> actions;
         bool resultat_combat;
     public:
         Monstre(string nom, string type, string mercy, bool resultat_combat);
@@ -23,10 +24,9 @@ class Monstre : public Statistique{
         string getNom();
         string getType();
         string getMercy();
-        Action* getActions();
+        vector <Action> getActions();
         bool getResultatCombat();
         void setResultatCombat(bool resultat_combat);
         void setMercy(string mercy);
-        void setActions(int place, Action act);
-        void setActions(Action* act);
+        void setActions(Action act);
 };
