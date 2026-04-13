@@ -93,7 +93,7 @@ string Monstre::getMercy(){
     return mercy;
 }
 
-Action* Monstre::getActions(){
+vector<Action> Monstre::getActions(){
     return actions;
 }
 
@@ -109,12 +109,8 @@ void Monstre::setMercy(string mercy){
     this->mercy = mercy;
 }
 
-void Monstre::setActions(int place, Action act){
-    actions[place] = act;
-}
-
-void Monstre::setActions(Action* act){
-    this->actions = act;
+void Monstre::setActions(Action act){
+    actions.push_back(act);
 }
 
 void Monstre::afficherActions(){
