@@ -13,7 +13,6 @@ class Action {
         string autre_effet;
     public:
         Action(string texte_drole = "", string nom = "",int effet_sur_mercy = 0, string autre_effet = "");
-        Action();
         void afficher();
         string getNom();
         string getTexteDrole() ;

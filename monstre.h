@@ -16,7 +16,7 @@ class Monstre : public Statistique{
         Action* actions;
         bool resultat_combat;
     public:
-        Monstre(string nom, string type, string mercy, Action* actions, bool resultat_combat);
+        Monstre(string nom, string type, string mercy, bool resultat_combat);
         Monstre();
         void afficher();
         void afficherActions();
@@ -27,4 +27,6 @@ class Monstre : public Statistique{
         bool getResultatCombat();
         void setResultatCombat(bool resultat_combat);
         void setMercy(string mercy);
+        void setActions(int place, Action act);
+        void setActions(Action* act);
 };

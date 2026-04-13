@@ -3,11 +3,10 @@
 #include <sstream>
 #include <random>
 
-Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat){
+Monstre::Monstre(string nom, string type, string mercy, bool resultat_combat){
     this->nom = nom;
     this->type = type;
     this->mercy = mercy;
-    this->actions = actions;
     this->resultat_combat = resultat_combat;
 }
 
@@ -108,6 +107,14 @@ void Monstre::setResultatCombat(bool resultat_combat){
 
 void Monstre::setMercy(string mercy){
     this->mercy = mercy;
+}
+
+void Monstre::setActions(int place, Action act){
+    actions[place] = act;
+}
+
+void Monstre::setActions(Action* act){
+    this->actions = act;
 }
 
 void Monstre::afficherActions(){
