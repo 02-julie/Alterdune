@@ -13,20 +13,20 @@ class Monstre : public Statistique{
         int id;
         string nom;
         string type;
-        string mercy;
+        int mercy;
         vector<Action> actions;
-        bool resultat_combat;
+        int resultat_combat;
     public:
-        Monstre(string nom, string type, string mercy, bool resultat_combat);
+        Monstre(string nom, string type, int mercy, int resultat_combat);
         Monstre();
         void afficher();
         void afficherActions();
         string getNom();
         string getType();
-        string getMercy();
+        int getMercy();
         vector <Action> getActions();
-        bool getResultatCombat();
-        void setResultatCombat(bool resultat_combat);
-        void setMercy(string mercy);
+        int getResultatCombat();
+        void setResultatCombat(int resultat_combat);
+        void setMercy(int mercy);
         void setActions(Action act);
 };

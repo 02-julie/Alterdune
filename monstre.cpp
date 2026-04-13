@@ -3,7 +3,7 @@
 #include <sstream>
 #include <random>
 
-Monstre::Monstre(string nom, string type, string mercy, bool resultat_combat){
+Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
     this->nom = nom;
     this->type = type;
     this->mercy = mercy;
@@ -54,16 +54,17 @@ Monstre::Monstre(): Statistique(){
         fichier.close();
 
         stringstream ss(ligneChoisie);
-        string nom, type, mercy, hp_str, attaque_str, defense_str;
+        string nom, type, mercy_str, hp_str, attaque_str, defense_str;
 
         getline(ss, type, ',');
         getline(ss, nom, ',');        
         getline(ss, hp_str, ',');
         getline(ss, attaque_str, ',');
         getline(ss, defense_str, ',');
-        getline(ss, mercy, ',');
+        getline(ss, mercy_str, ',');
         
         try {
+            Statistique::set_hp(stoi(mercy_str));
             Statistique::set_hp(stoi(hp_str));
             Statistique::set_attaque(stoi(attaque_str));
             Statistique::set_defense(stoi(defense_str));
@@ -74,7 +75,7 @@ Monstre::Monstre(): Statistique(){
 
         this->nom = nom;
         this->type = type;
-        this->mercy = mercy;
+       
     }
     catch(const exception& e){
         cerr << e.what() << endl;
@@ -89,7 +90,7 @@ string Monstre::getType(){
     return type;
 }
 
-string Monstre::getMercy(){
+int Monstre::getMercy(){
     return mercy;
 }
 
@@ -97,15 +98,15 @@ vector<Action> Monstre::getActions(){
     return actions;
 }
 
-bool Monstre::getResultatCombat(){
+int Monstre::getResultatCombat(){
     return resultat_combat;
 }
 
-void Monstre::setResultatCombat(bool resultat_combat){
+void Monstre::setResultatCombat(int resultat_combat){
     this->resultat_combat = resultat_combat;
 }
 
-void Monstre::setMercy(string mercy){
+void Monstre::setMercy(int mercy){
     this->mercy = mercy;
 }
 
@@ -126,6 +127,7 @@ void Monstre::afficherActions(){
         n = 2;
     }
     for(int i = 0; i < n; i++){
+        cout<<i+1<<" : ";
         actions[i].afficher();
     }
 }

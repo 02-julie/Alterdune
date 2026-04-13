@@ -88,3 +88,13 @@ void Joueur::Afficher()
     }
     
 }
+void Joueur::AfficherInventaire()
+{
+    
+    for(int i=0;i<nb_items;i++)
+    {
+        cout<<"\nItems:"<<endl;
+        items[i].Afficher();
+    }
+    
+}
