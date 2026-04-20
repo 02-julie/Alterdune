@@ -19,7 +19,8 @@ class Item
         string get_descriptif();
         double get_effet();
         int get_quantite();
-        void set_id(int quantite);
+        void set_quantite(int quantite);
+        
         void Afficher();
 
 };

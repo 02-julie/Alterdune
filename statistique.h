@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATISTIQUE_H
+#define STATISTIQUE_H
 #include <iostream>
 #include <string>
 #include <memory>
@@ -13,7 +14,7 @@ class Statistique
         int defense;
     public:
         Statistique(int hp=100, int attaque=10, int defense=10);
-        int get_hp();
+        int get_hp()const;
         int get_defense();
         int get_attaque();
         void Afficher();
@@ -22,3 +23,4 @@ class Statistique
         void set_hp(int hp);
         
 };
+#endif

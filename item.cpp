@@ -29,7 +29,7 @@ int Item::get_quantite()
     return this->quantite;
 }
 
-void Item::set_id(int quantite)
+void Item::set_quantite(int quantite)
 {
     this->quantite=quantite;
 }

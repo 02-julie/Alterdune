@@ -14,12 +14,14 @@ class Joueur:public Statistique
         int nb_items;
     public:
         Joueur(string nom);
+        Joueur();
         string get_nom();
         Item* get_items();
         int get_nb_items();
         void set_nb_items(int nb_item);
         void set_items(Item* items);
         void Afficher();
+        void AfficherInventaire();
         
 
         
