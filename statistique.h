@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATISTIQUE_H
+#define STATISTIQUE_H
 #include <iostream>
 #include <string>
 #include <memory>
@@ -22,3 +23,4 @@ class Statistique
         void set_hp(int hp);
         
 };
+#endif

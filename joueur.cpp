@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-Joueur::Joueur(string nom):Statistique( hp=100,  attaque=5, defense=5)
+Joueur::Joueur(string nom):Statistique( hp=1000,  attaque=5, defense=5)
 {
     this->nom=nom;
     this->nb_items=6;
@@ -81,11 +81,6 @@ void Joueur::Afficher()
     cout<<"Nom: "<<nom<<"\nItems: "<<endl;
     Statistique::Afficher();
     
-    for(int i=0;i<nb_items;i++)
-    {
-        cout<<"\nItems:"<<endl;
-        items[i].Afficher();
-    }
     
 }
 void Joueur::AfficherInventaire()
@@ -93,7 +88,7 @@ void Joueur::AfficherInventaire()
     
     for(int i=0;i<nb_items;i++)
     {
-        cout<<"\nItems:"<<endl;
+        cout<<"\nItems "<<i+1<<": "<<endl;
         items[i].Afficher();
     }
     

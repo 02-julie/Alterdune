@@ -25,7 +25,7 @@ class Monstre : public Statistique{
         string getType();
         int getMercy();
         vector <Action> getActions();
-        int getResultatCombat();
+        int getResultatCombat()const;
         void setResultatCombat(int resultat_combat);
         void setMercy(int mercy);
         void setActions(Action act);

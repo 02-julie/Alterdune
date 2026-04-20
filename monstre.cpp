@@ -98,7 +98,7 @@ vector<Action> Monstre::getActions(){
     return actions;
 }
 
-int Monstre::getResultatCombat(){
+int Monstre::getResultatCombat()const{
     return resultat_combat;
 }
 
