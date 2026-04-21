@@ -1,19 +1,19 @@
-#ifndef STATISTIQUE_H
-#define STATISTIQUE_H
+#ifndef ENTITY_H
+#define ENTITY_H
 #include <iostream>
 #include <string>
 #include <memory>
 
 using  namespace std;
 
-class Statistique
+class Entity
 {
     protected:
         int hp;
         int attaque;
         int defense;
     public:
-        Statistique(int hp=100, int attaque=10, int defense=10);
+        Entity(int hp=100, int attaque=10, int defense=10);
         int get_hp()const;
         int get_defense();
         int get_attaque();

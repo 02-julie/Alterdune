@@ -5,10 +5,10 @@
 #include <vector>
 using  namespace std;
 #include "action.h"
-#include "statistique.h"
+#include "entity.h"
 
 
-class Monstre : public Statistique{
+class Monstre : public Entity{
     private:
         int id;
         string nom;

@@ -4,9 +4,9 @@
 #include <memory>
 using  namespace std;
 #include "item.h"
-#include "statistique.h"
+#include "entity.h"
 
-class Joueur:public Statistique
+class Joueur:public Entity
 {
     private:
         string nom;

@@ -2,7 +2,7 @@
 #include "item.h"
 #include "joueur.h"
 #include "monstre.h"
-#include "statistique.h"
+#include "entity.h"
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -110,7 +110,7 @@ void AfficherMenu(Joueur joueur, Monstre monstre)
     cout <<">";
 }
 
-int Degats(const Statistique& entite)
+int Degats(const Entity& entite)
 {
     int hp=entite.get_hp();
     random_device rd;

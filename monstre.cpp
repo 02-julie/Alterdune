@@ -11,7 +11,7 @@ Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
 }
 
 
-Monstre::Monstre(): Statistique(){
+Monstre::Monstre(): Entity(){
     try {
         ifstream fichier("monstres.csv");
         if(!fichier.is_open()){
@@ -60,10 +60,10 @@ Monstre::Monstre(): Statistique(){
         getline(ss, mercy_str, ',');
         
         try {
-            Statistique::set_hp(stoi(mercy_str));
-            Statistique::set_hp(stoi(hp_str));
-            Statistique::set_attaque(stoi(attaque_str));
-            Statistique::set_defense(stoi(defense_str));
+            Entity::set_hp(stoi(mercy_str));
+            Entity::set_hp(stoi(hp_str));
+            Entity::set_attaque(stoi(attaque_str));
+            Entity::set_defense(stoi(defense_str));
         }
         catch (const exception& e) {
             throw invalid_argument("Erreur de conversion sur le monstre : " + nom);
@@ -80,7 +80,7 @@ Monstre::Monstre(): Statistique(){
 
 void Monstre::afficher(){
     cout<<"\033[4m"<<nom<<"\033[0m : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
-    Statistique::Afficher();
+    Entity::Afficher();
 }
 
 string Monstre::getNom(){

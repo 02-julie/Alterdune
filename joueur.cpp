@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-Joueur::Joueur(string nom):Statistique( hp=1000,  attaque=5, defense=5)
+Joueur::Joueur(string nom):Entity( hp=1000,  attaque=5, defense=5)
 {
     this->nom=nom;
     this->nb_items=6;
@@ -79,7 +79,7 @@ int Joueur::get_nb_items()
 void Joueur::Afficher()
 {
     cout<<"nom : "<<nom<<endl;
-    Statistique::Afficher();
+    Entity::Afficher();
     
     
 }
