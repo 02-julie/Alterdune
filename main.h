@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #pragma once
 
 #include <iostream>
@@ -17,3 +18,7 @@ using  namespace std;
 #include "item.h"
 #include "joueur.h"
 #include "bestiaire.h"
+=======
+
+
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf

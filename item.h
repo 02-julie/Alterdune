@@ -1,5 +1,8 @@
 #pragma once
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 #include <iostream>
 #include <string>
 #include <memory>
@@ -27,7 +30,12 @@ class Item
         string get_descriptif();
         double get_effet();
         int get_quantite();
+<<<<<<< HEAD
         void set_id(int quantite);
+=======
+        void set_quantite(int quantite);
+        
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
         void Afficher();
 
 };

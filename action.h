@@ -1,4 +1,5 @@
 #pragma once
+<<<<<<< HEAD
 
 #include <iostream>
 #include <string>
@@ -9,6 +10,11 @@
 #include <fstream>
 #include <sstream>
 #include <random>
+=======
+#include <iostream>
+#include <string>
+#include <memory>
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 using  namespace std;
 
 class Action {
@@ -20,7 +26,6 @@ class Action {
         string autre_effet;
     public:
         Action(string texte_drole = "", string nom = "",int effet_sur_mercy = 0, string autre_effet = "");
-        Action();
         void afficher();
         string getNom();
         string getTexteDrole() ;

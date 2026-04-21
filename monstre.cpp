@@ -1,13 +1,25 @@
+<<<<<<< HEAD
 #include "main.h"
 
 Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat):Statistique( hp,  attaque, defense){
+=======
+#include "monstre.h"
+#include <fstream>
+#include <sstream>
+#include <random>
+
+Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
     this->nom = nom;
     this->type = type;
     this->mercy = mercy;
-    this->actions = actions;
     this->resultat_combat = resultat_combat;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 Monstre::Monstre(): Statistique(){
     try {
         ifstream fichier("monstres.csv");
@@ -47,6 +59,7 @@ Monstre::Monstre(): Statistique(){
         fichier.close();
 
         stringstream ss(ligneChoisie);
+<<<<<<< HEAD
         string nom, type, mercy, hp_str, attaque_str, defense_str;
 
         getline(ss, type, ',');
@@ -57,6 +70,19 @@ Monstre::Monstre(): Statistique(){
         getline(ss, defense_str, ',');
         
         try {
+=======
+        string nom, type, mercy_str, hp_str, attaque_str, defense_str;
+
+        getline(ss, type, ',');
+        getline(ss, nom, ',');        
+        getline(ss, hp_str, ',');
+        getline(ss, attaque_str, ',');
+        getline(ss, defense_str, ',');
+        getline(ss, mercy_str, ',');
+        
+        try {
+            Statistique::set_hp(stoi(mercy_str));
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
             Statistique::set_hp(stoi(hp_str));
             Statistique::set_attaque(stoi(attaque_str));
             Statistique::set_defense(stoi(defense_str));
@@ -67,7 +93,11 @@ Monstre::Monstre(): Statistique(){
 
         this->nom = nom;
         this->type = type;
+<<<<<<< HEAD
         this->mercy = mercy;
+=======
+       
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
     }
     catch(const exception& e){
         cerr << e.what() << endl;
@@ -75,6 +105,7 @@ Monstre::Monstre(): Statistique(){
 }
 
 void Monstre::afficher(){
+<<<<<<< HEAD
     cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<endl;
     if(resultat_combat){
         cout<<"L'ennemie a ete tue !!"<<endl;
@@ -82,6 +113,10 @@ void Monstre::afficher(){
     else{
         cout<<"L'ennemie a ete epargne "<<endl;
     }
+=======
+    cout<<"\033[4m"<<nom<<"\033[0m : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
+    Statistique::Afficher();
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 }
 
 string Monstre::getNom(){
@@ -92,24 +127,28 @@ string Monstre::getType(){
     return type;
 }
 
-string Monstre::getMercy(){
+int Monstre::getMercy(){
     return mercy;
 }
 
-Action* Monstre::getActions(){
+vector<Action> Monstre::getActions(){
     return actions;
 }
 
-bool Monstre::getResultatCombat(){
+int Monstre::getResultatCombat()const{
     return resultat_combat;
 }
 
-void Monstre::setResultatCombat(bool resultat_combat){
+void Monstre::setResultatCombat(int resultat_combat){
     this->resultat_combat = resultat_combat;
 }
 
-void Monstre::setMercy(string mercy){
+void Monstre::setMercy(int mercy){
     this->mercy = mercy;
+}
+
+void Monstre::setActions(Action act){
+    actions.push_back(act);
 }
 
 void Monstre::afficherActions(){
@@ -125,6 +164,7 @@ void Monstre::afficherActions(){
         n = 2;
     }
     for(int i = 0; i < n; i++){
+        cout<<i+1<<")\n";
         actions[i].afficher();
     }
 }
