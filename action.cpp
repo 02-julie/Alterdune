@@ -9,7 +9,11 @@ Action::Action(string texte_drole, string nom, int effet_sur_mercy, string autre
 }
 
 void Action::afficher() {
-    cout <<nom<< " : \n" << texte_drole <<"\nEffet sur Mercy: " << effet_sur_mercy <<"\nAutre effet: " << autre_effet<<"\n" << endl;
+    cout <<nom<< " : \n" << texte_drole <<"\nEffet sur Mercy: " << effet_sur_mercy <<endl;
+    if(autre_effet!=""){
+        cout<<"Autre effet: " << autre_effet<<"\n" << endl;
+    }
+    
 }
 
 string Action::getNom() {

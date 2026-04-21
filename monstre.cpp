@@ -10,10 +10,6 @@ Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
     this->resultat_combat = resultat_combat;
 }
 
-void Monstre::afficher(){
-    cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
-    Statistique::Afficher();
-}
 
 Monstre::Monstre(): Statistique(){
     try {
@@ -82,6 +78,11 @@ Monstre::Monstre(): Statistique(){
     }
 }
 
+void Monstre::afficher(){
+    cout<<"\033[4m"<<nom<<"\033[0m : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
+    Statistique::Afficher();
+}
+
 string Monstre::getNom(){
     return nom;
 }
@@ -127,7 +128,7 @@ void Monstre::afficherActions(){
         n = 2;
     }
     for(int i = 0; i < n; i++){
-        cout<<i+1<<" : ";
+        cout<<i+1<<")\n";
         actions[i].afficher();
     }
 }

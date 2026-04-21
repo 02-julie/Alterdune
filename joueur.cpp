@@ -78,17 +78,17 @@ int Joueur::get_nb_items()
 }
 void Joueur::Afficher()
 {
-    cout<<"Nom: "<<nom<<"\nItems: "<<endl;
+    cout<<"nom : "<<nom<<endl;
     Statistique::Afficher();
     
     
 }
 void Joueur::AfficherInventaire()
 {
-    
+    cout<<"Le hero "<<nom<<" possede : "<<endl;
     for(int i=0;i<nb_items;i++)
     {
-        cout<<"\nItems "<<i+1<<": "<<endl;
+        cout<<"\nItem "<<i+1<<": "<<endl;
         items[i].Afficher();
     }
     

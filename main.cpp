@@ -107,7 +107,7 @@ void AfficherMenu(Joueur joueur, Monstre monstre)
     cout<<"Choisir l'action: "<<endl;
     cout<<"\033[1mFIGHT          ACT          ITEM          MERCY\033[0m"<<endl;
     cout<<"(1)           (2)           (3)          (4)"<<endl;   
-    cout <<"\n" <<endl;
+    cout <<">";
 }
 
 int Degats(const Statistique& entite)
@@ -197,7 +197,7 @@ bool Combat(Joueur& j, Monstre& m)
     int item_choisi;
     int act;
     int degats_finaux;
-    while(j.get_hp()>0 && m.get_hp()>0&&epargne)
+    while(j.get_hp()>0 && m.get_hp()>0 && epargne)
     {
         AfficherMenu(j,m);
         int action;
@@ -210,7 +210,7 @@ bool Combat(Joueur& j, Monstre& m)
         switch(action)
         {
             case 1:
-                cout<<"Statistiques du monstres: \n ATTAQUE: "<<m.get_attaque()<<"\n DEFENSE: "<<m.get_defense()<<endl;
+                //cout<<"Statistiques du monstres: \n ATTAQUE: "<<m.get_attaque()<<"\n DEFENSE: "<<m.get_defense()<<endl;
                 degats_finaux=Degats(m)+j.get_attaque()-m.get_defense();
                 if (degats_finaux < 0) degats_finaux = 0;
                 cout<<"Vous enlevez "<<degats_finaux<<" au monstre!"<<endl;
@@ -240,7 +240,7 @@ bool Combat(Joueur& j, Monstre& m)
         
                 j.AfficherInventaire();
                 cout<<"taper 0 pour revenir en arriere"<<endl;
-                
+                cout<<">";
                 cin>>item_choisi;
                 while(item_choisi<0||item_choisi>6)
                 {
@@ -278,12 +278,13 @@ bool Combat(Joueur& j, Monstre& m)
         if (action == 4 && m.getMercy() < 100) continue;
         if(epargne && m.get_hp() > 0)
         {
-            if(m.get_hp()!=0)
-            {
-                degats_finaux=Degats(j)+m.get_attaque()-j.get_defense();
-                if (degats_finaux < 0) degats_finaux = 0;
-                j.set_hp(j.get_hp()-degats_finaux);
-            }
+            //if(m.get_hp()!=0)
+            
+            degats_finaux=Degats(j)+m.get_attaque()-j.get_defense();
+            if (degats_finaux < 0) degats_finaux = 0;
+            j.set_hp(j.get_hp()-degats_finaux);
+            cout<<m.getNom()<<" vous enleve "<<degats_finaux<<" HP!"<<endl;
+            
         }
         item_choisi=1;
         act=1;
@@ -296,14 +297,13 @@ bool Combat(Joueur& j, Monstre& m)
 }
 
 void AfficherIntro() {
-    cout << "==========================================================" << endl;
-    cout << "   _   _   _   _   _   _   _   _   _  " << endl;
+    cout << "BIENVENUE DANS" << endl;
+    cout << "=======================================" << endl;
     cout << "  / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ " << endl;
     cout << " ( A | L | T | E | R | D | U | N | E )" << endl;
     cout << "  \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ " << endl;
-    cout << "==========================================================" << endl;
+    cout << "=======================================" << endl;    
     
-    cout << "\n--- BIENVENUE DANS L'ALTERDUNE ---" << endl;
     cout << "Un jeu ou chaque choix est crucial.\n" << endl;
 
     cout << "--- REGLES RAPIDES ---" << endl;
@@ -314,17 +314,17 @@ void AfficherIntro() {
     cout << "5. FINS   : Vos actions menent a une fin Pacifiste, Neutre ou Genocidaire." << endl;
     
     cout << "\nBonne chance, l'humanite compte sur vous." << endl;
-    cout << "==========================================================\n" << endl;
+    cout << "=======================================" << endl;
 }
 
 
 int main(){
     
     Action a1("ilicco est content","caresse",20,"");
-    Action a2("Bravo Tu as trouvé son point faible ","snack",40,"");
+    Action a2("Bravo Tu as trouve son point faible ","snack",40,"");
     Action a3("@&#$!","insulte",40,"");
     Action a4("Fayot!","compliment",20,"");
-    Action a5("Mario est en colère attention!","peach",20,"");
+    Action a5("Mario est en colere attention!","peach",20,"");
     Action a6("Un peu de redbull pour te revigorer!","powerup",20,"");
     Action a7("Trop fort!","exoResolu",20,"");
     Action a8("20/20!","bonneNote",20,"");
@@ -334,13 +334,11 @@ int main(){
     vector<Monstre> monstres = CreationMonstres(actions);
     AfficherIntro();
     
-    cout << "Entrer ton nom: ";
+    cout << "Entrer votre nom > ";
     string nom;
     cin >> nom;
     Joueur j(nom); 
     j.Afficher();
-                
-
     int a=-1;
     bool perdu=false;
     while(a!=0)
@@ -358,8 +356,9 @@ int main(){
                 nbEpargne++;
             }
         }
-        while((a!=0 && !perdu)||(a!=0 &&nbVictoires!=monstres.size())||(a!=0&&nbEpargne!=monstres.size())||(a!=0&&nbEpargne+nbVictoires!=monstres.size()))
+        while((a!=0 && !perdu)||(a!=0 && nbVictoires!=monstres.size())||(a!=0 && nbEpargne!=monstres.size())||(a!=0  && nbEpargne+nbVictoires!=monstres.size()))
         {
+            cout<<"======================================="<<endl;
             cout<<"Menu : \ntaper 1 pour afficher tes stats \ntaper 2 pour afficher ton inventaire\ntaper 3 pour demarrer le combat contre un monstre\ntaper 0 pour sortir\n>";
             cin>>a;
             switch (a) {
@@ -388,7 +387,7 @@ int main(){
                     {
                         index=distrib(gen);
                     } 
-                    cout<<index<<endl;
+                    //cout<<index<<endl;
                     monstres[index].afficher();
                     bool resultatDefaite = Combat(j, monstres[index]); 
                     if(resultatDefaite)
