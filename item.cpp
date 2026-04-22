@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+#include "main.h"
+=======
 #include "item.h"
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 
 Item::Item(int id,string nom,string descriptif,double effet, int quantite)
 {

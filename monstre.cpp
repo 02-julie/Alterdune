@@ -1,16 +1,25 @@
+<<<<<<< HEAD
+#include "main.h"
+
+Monstre::Monstre(string nom, string type, string mercy, Action actions[], bool resultat_combat):Statistique( hp,  attaque, defense){
+=======
 #include "monstre.h"
 #include <fstream>
 #include <sstream>
 #include <random>
 
 Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
     this->nom = nom;
     this->type = type;
     this->mercy = mercy;
     this->resultat_combat = resultat_combat;
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 Monstre::Monstre(): Statistique(){
     try {
         ifstream fichier("monstres.csv");
@@ -50,6 +59,18 @@ Monstre::Monstre(): Statistique(){
         fichier.close();
 
         stringstream ss(ligneChoisie);
+<<<<<<< HEAD
+        string nom, type, mercy, hp_str, attaque_str, defense_str;
+
+        getline(ss, type, ',');
+        getline(ss, nom, ',');
+        getline(ss, mercy, ',');
+        getline(ss, hp_str, ',');
+        getline(ss, attaque_str, ',');
+        getline(ss, defense_str, ',');
+        
+        try {
+=======
         string nom, type, mercy_str, hp_str, attaque_str, defense_str;
 
         getline(ss, type, ',');
@@ -61,6 +82,7 @@ Monstre::Monstre(): Statistique(){
         
         try {
             Statistique::set_hp(stoi(mercy_str));
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
             Statistique::set_hp(stoi(hp_str));
             Statistique::set_attaque(stoi(attaque_str));
             Statistique::set_defense(stoi(defense_str));
@@ -71,7 +93,11 @@ Monstre::Monstre(): Statistique(){
 
         this->nom = nom;
         this->type = type;
+<<<<<<< HEAD
+        this->mercy = mercy;
+=======
        
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
     }
     catch(const exception& e){
         cerr << e.what() << endl;
@@ -79,8 +105,18 @@ Monstre::Monstre(): Statistique(){
 }
 
 void Monstre::afficher(){
+<<<<<<< HEAD
+    cout<<nom<<" : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<endl;
+    if(resultat_combat){
+        cout<<"L'ennemie a ete tue !!"<<endl;
+    }
+    else{
+        cout<<"L'ennemie a ete epargne "<<endl;
+    }
+=======
     cout<<"\033[4m"<<nom<<"\033[0m : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
     Statistique::Afficher();
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 }
 
 string Monstre::getNom(){

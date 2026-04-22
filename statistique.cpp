@@ -1,4 +1,4 @@
-#include "statistique.h"
+#include "main.h"
 
 Statistique::Statistique(int hp, int attaque,int defense)
 {
@@ -6,7 +6,12 @@ this->hp=hp;
 this->attaque=attaque;
 this->defense=defense;
 }
+<<<<<<< HEAD
+
+int Statistique::get_hp()
+=======
 int Statistique::get_hp()const
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 {
     return hp;
 }

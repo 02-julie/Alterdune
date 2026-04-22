@@ -1,6 +1,10 @@
+<<<<<<< HEAD
+#include "main.h"
+=======
 #include "joueur.h"
 #include <fstream>
 #include <sstream>
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 
 Joueur::Joueur(string nom):Statistique( hp=1000,  attaque=5, defense=5)
 {

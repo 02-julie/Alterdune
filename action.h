@@ -1,7 +1,20 @@
 #pragma once
+<<<<<<< HEAD
+
 #include <iostream>
 #include <string>
 #include <memory>
+#include <vector>
+#include <cstdlib>
+#include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <random>
+=======
+#include <iostream>
+#include <string>
+#include <memory>
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 using  namespace std;
 
 class Action {

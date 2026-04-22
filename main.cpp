@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+#include "main.h"
+
+int main(){
+    Monstre monstre = Monstre();
+    monstre.afficher();
+    return 0;
+=======
 #include "action.h"
 #include "item.h"
 #include "joueur.h"
@@ -449,4 +457,5 @@ int main(){
     }     
         
         return 0;
+>>>>>>> 7b0cce95b1679a61b934e03fdbdd43f32f198aaf
 };
