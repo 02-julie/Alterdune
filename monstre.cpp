@@ -10,77 +10,13 @@ Monstre::Monstre(string nom, string type, int mercy, int resultat_combat){
     this->resultat_combat = resultat_combat;
 }
 
-
-Monstre::Monstre(): Statistique(){
-    try {
-        ifstream fichier("monstres.csv");
-        if(!fichier.is_open()){
-            throw runtime_error("Erreur : impossible d'ouvrir le fichier");
-        }
-
-        int nombreDeLignes = 0;
-        string ligneTemp;
-        
-        while (getline(fichier, ligneTemp)) {
-            if (!ligneTemp.empty()) {
-                nombreDeLignes++;
-            }
-        }
-
-        random_device rd;
-        mt19937 gen(rd());
-        uniform_int_distribution<> distrib(1, nombreDeLignes);
-
-        int ligneCible = distrib(gen);
-        fichier.clear();
-        fichier.seekg(0);
-
-        string ligneChoisie;
-        int ligneActuelle = 0;
-
-        while (getline(fichier, ligneTemp)) {
-            if (!ligneTemp.empty()) {
-                ligneActuelle++;
-                if (ligneActuelle == ligneCible) {
-                    ligneChoisie = ligneTemp; 
-                    break;
-                }
-            }
-        }
-        fichier.close();
-
-        stringstream ss(ligneChoisie);
-        string nom, type, mercy_str, hp_str, attaque_str, defense_str;
-
-        getline(ss, type, ',');
-        getline(ss, nom, ',');        
-        getline(ss, hp_str, ',');
-        getline(ss, attaque_str, ',');
-        getline(ss, defense_str, ',');
-        getline(ss, mercy_str, ',');
-        
-        try {
-            Statistique::set_hp(stoi(mercy_str));
-            Statistique::set_hp(stoi(hp_str));
-            Statistique::set_attaque(stoi(attaque_str));
-            Statistique::set_defense(stoi(defense_str));
-        }
-        catch (const exception& e) {
-            throw invalid_argument("Erreur de conversion sur le monstre : " + nom);
-        }
-
-        this->nom = nom;
-        this->type = type;
-       
-    }
-    catch(const exception& e){
-        cerr << e.what() << endl;
-    }
-}
-
 void Monstre::afficher(){
     cout<<"\033[4m"<<nom<<"\033[0m : \nType : "<<type<<"\nMercy : "<<mercy<<"\n"<<"Stats : "<<endl;
-    Statistique::Afficher();
+    cout<<"attaque : ";
+    cout<<Entity::get_attaque();
+    cout<<"\ndefense : ";
+    cout<<Entity::get_defense();
+    cout<<"\nHP : "<<getHP_initial()<<endl;
 }
 
 string Monstre::getNom(){
@@ -101,6 +37,14 @@ vector<Action> Monstre::getActions(){
 
 int Monstre::getResultatCombat()const{
     return resultat_combat;
+}
+
+int Monstre::getHP_initial(){
+    return HP_initial;
+}
+
+void Monstre::setHP_initial(int hp){
+    this->HP_initial = hp;
 }
 
 void Monstre::setResultatCombat(int resultat_combat){
@@ -127,8 +71,13 @@ void Monstre::afficherActions(){
     else if(type == "NORMAL"){
         n = 2;
     }
+    cout<<left<<setw(15)<<"numero"
+        <<left<<setw(15)<<"nom"
+        <<left<<setw(15)<<"Text drole"<<endl;
+        cout << "----------------------------------------" << endl;
     for(int i = 0; i < n; i++){
-        cout<<i+1<<")\n";
+        
+        cout<<left<<setw(15)<<i+1;
         actions[i].afficher();
     }
 }

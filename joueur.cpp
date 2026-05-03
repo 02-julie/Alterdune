@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-Joueur::Joueur(string nom):Statistique( hp=1000,  attaque=5, defense=5)
+Joueur::Joueur(string nom):Entity( hp=100,  attaque=20, defense=10)
 {
     this->nom=nom;
-    this->nb_items=6;
+    this->nb_items=5;
     this->items=new Item[nb_items];
     int compteur=0;
     ifstream fichier("items.csv");
@@ -53,6 +53,10 @@ Joueur::Joueur(string nom):Statistique( hp=1000,  attaque=5, defense=5)
     }
 }
 
+Joueur::~Joueur() {
+    delete[] items;
+}
+
 string Joueur::get_nom()
 {
     return this->nom;
@@ -79,16 +83,24 @@ int Joueur::get_nb_items()
 void Joueur::Afficher()
 {
     cout<<"nom : "<<nom<<endl;
-    Statistique::Afficher();
+    Entity::Afficher();
     
     
 }
 void Joueur::AfficherInventaire()
 {
-    cout<<"Le hero "<<nom<<" possede : "<<endl;
-    for(int i=0;i<nb_items;i++)
+    cout << "Le hero " << nom << " possede : " << endl;
+    cout << endl;
+
+    cout << left << setw(15) << "nom" 
+         << left << setw(15) << "descriptif" 
+         << left << setw(10) << "effet" 
+         << left << setw(10) << "quantite" << endl;
+         
+    cout << "--------------------------------------------------" << endl;
+
+    for(int i = 0; i < nb_items; i++)
     {
-        cout<<"\nItem "<<i+1<<": "<<endl;
         items[i].Afficher();
     }
     

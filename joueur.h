@@ -2,11 +2,12 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <iomanip>
 using  namespace std;
 #include "item.h"
-#include "statistique.h"
+#include "entity.h"
 
-class Joueur:public Statistique
+class Joueur:public Entity
 {
     private:
         string nom;
@@ -15,6 +16,7 @@ class Joueur:public Statistique
     public:
         Joueur(string nom);
         Joueur();
+        ~Joueur();
         string get_nom();
         Item* get_items();
         int get_nb_items();

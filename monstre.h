@@ -3,12 +3,13 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <iomanip>
 using  namespace std;
 #include "action.h"
-#include "statistique.h"
+#include "entity.h"
 
 
-class Monstre : public Statistique{
+class Monstre : public Entity{
     private:
         int id;
         string nom;
@@ -16,9 +17,9 @@ class Monstre : public Statistique{
         int mercy;
         vector<Action> actions;
         int resultat_combat;
+        int HP_initial;
     public:
         Monstre(string nom, string type, int mercy, int resultat_combat);
-        Monstre();
         void afficher();
         void afficherActions();
         string getNom();
@@ -29,4 +30,6 @@ class Monstre : public Statistique{
         void setResultatCombat(int resultat_combat);
         void setMercy(int mercy);
         void setActions(Action act);
+        int getHP_initial();
+        void setHP_initial(int hp);
 };
