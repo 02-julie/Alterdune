@@ -36,7 +36,10 @@ void Item::set_quantite(int quantite)
 
 void Item::Afficher()
 {
-    cout<<"nom: "<<nom<<"\nDescriptif: "<<descriptif<<"\nEffet : "<<effet<<"\nQuantite: "<<quantite<<endl;
+    cout << left << setw(15) << nom 
+         << left << setw(15) << descriptif 
+         << left << setw(10) << effet 
+         << left << setw(10) << quantite << endl;
 }
 
 

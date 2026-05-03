@@ -1,4 +1,10 @@
 NORMAL,illico,30,7,1,0,caresse,snack,-,-
 MINIBOSS,troll,45,10,2,0,insulte,compliment,snack,-
-BOSS,bowser,80,15,4,0,insulte,compliment,peach,powerup
+MINIBOSS,bowser,55,15,4,0,insulte,compliment,peach,-
 MINIBOSS,statistix,45,10,2,0,exoResolu,bonneNote,triche,-
+NORMAL,Petit_Slime,20,5,2,0,caresse,insulte,-,-
+NORMAL,Gros_Chien,35,8,3,0,caresse,snack,-,-
+MINIBOSS,Prof_Snape,50,12,5,0,insulte,exoResolu,bonneNote,-
+MINIBOSS,Codeur_Fou,55,10,4,0,triche,powerup,insulte,-
+BOSS,Giga_Etudiant,75,18,8,0,exoResolu,bonneNote,triche,snack
+BOSS,Mega_bowser,80,20,10,0,peach,compliment,peach,powerup
