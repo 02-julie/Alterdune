@@ -53,6 +53,10 @@ Joueur::Joueur(string nom):Entity( hp=100,  attaque=20, defense=10)
     }
 }
 
+Joueur::~Joueur() {
+    delete[] items;
+}
+
 string Joueur::get_nom()
 {
     return this->nom;
@@ -85,10 +89,18 @@ void Joueur::Afficher()
 }
 void Joueur::AfficherInventaire()
 {
-    cout<<"Le hero "<<nom<<" possede : "<<endl;
-    for(int i=0;i<nb_items;i++)
+    cout << "Le hero " << nom << " possede : " << endl;
+    cout << endl;
+
+    cout << left << setw(15) << "nom" 
+         << left << setw(15) << "descriptif" 
+         << left << setw(10) << "effet" 
+         << left << setw(10) << "quantite" << endl;
+         
+    cout << "--------------------------------------------------" << endl;
+
+    for(int i = 0; i < nb_items; i++)
     {
-        cout<<"\nItem "<<i+1<<": "<<endl;
         items[i].Afficher();
     }
     

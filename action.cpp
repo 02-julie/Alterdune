@@ -9,9 +9,12 @@ Action::Action(string texte_drole, string nom, int effet_sur_mercy, string autre
 }
 
 void Action::afficher() {
-    cout <<nom<< " : \n" << texte_drole<<endl;
+    cout <<left<<setw(15)<<nom
+    <<left<<setw(15)<< texte_drole<<endl;
+
+
     if(autre_effet!=""){
-        cout<<"Autre effet: " << autre_effet<<"\n" << endl;
+        cout<<left<<setw(15)<< autre_effet<< endl;
     }
     
 }

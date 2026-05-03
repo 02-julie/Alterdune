@@ -71,8 +71,13 @@ void Monstre::afficherActions(){
     else if(type == "NORMAL"){
         n = 2;
     }
+    cout<<left<<setw(15)<<"numero"
+        <<left<<setw(15)<<"nom"
+        <<left<<setw(15)<<"Text drole"<<endl;
+        cout << "----------------------------------------" << endl;
     for(int i = 0; i < n; i++){
-        cout<<i+1<<")\n";
+        
+        cout<<left<<setw(15)<<i+1;
         actions[i].afficher();
     }
 }

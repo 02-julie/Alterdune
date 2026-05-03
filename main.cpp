@@ -114,8 +114,8 @@ void AfficherMenu(Joueur joueur, Monstre monstre)
 int Degats(const Entity& entite)
 {
     int hp=entite.get_hp();
-    random_device rd;
-    mt19937 gen(rd());
+    static random_device rd;
+    static mt19937 gen(rd());
     uniform_int_distribution<int> distrib(0, hp);
     int degat = distrib(gen);
     return degat;
