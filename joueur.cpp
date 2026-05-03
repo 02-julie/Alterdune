@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-Joueur::Joueur(string nom):Entity( hp=1000,  attaque=5, defense=5)
+Joueur::Joueur(string nom):Entity( hp=100,  attaque=20, defense=10)
 {
     this->nom=nom;
-    this->nb_items=6;
+    this->nb_items=5;
     this->items=new Item[nb_items];
     int compteur=0;
     ifstream fichier("items.csv");

@@ -73,6 +73,7 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
         try
         {
             m.set_hp(stoi(hp_str));
+            m.setHP_initial(stoi(hp_str));
             m.setMercy(stoi(mercy_str));
             m.set_attaque(stoi(attaque_str));
             m.set_defense(stoi(defense_str));
@@ -155,6 +156,9 @@ void Effet_action(int i,Monstre& m)
     if(m.getMercy()>100)
     {
         m.setMercy(100);
+    }
+    else if (m.getMercy()<0){
+        m.setMercy(0);
     }
     cout<<"Vous avez ajoute "<<m.getActions()[i].getEffetSurMercy()<<" points de Mercy au monstre"<<endl;
     cout<<"Le monstre a maintenant: "<<m.getMercy()<<" points de mercy"<<endl;
@@ -242,9 +246,9 @@ bool Combat(Joueur& j, Monstre& m)
                 cout<<"taper 0 pour revenir en arriere"<<endl;
                 cout<<">";
                 cin>>item_choisi;
-                while(item_choisi<0||item_choisi>6)
+                while(item_choisi<1||item_choisi>5)
                 {
-                    cout<<"Veuillez donner un nombre entre 0 et 6"<<endl;
+                    cout<<"Veuillez donner un nombre entre 1 et 5"<<endl;
                     cin>>item_choisi;
                 }
                 if(item_choisi!=0)
@@ -320,15 +324,16 @@ void AfficherIntro() {
 
 int main(){
     
-    Action a1("ilicco est content","caresse",20,"");
+    Action a1("le monstre est content","caresse",20,"");
     Action a2("Bravo Tu as trouve son point faible ","snack",40,"");
-    Action a3("@&#$!","insulte",40,"");
+    Action a3("@&#$!","insulte",-40,"");
     Action a4("Fayot!","compliment",20,"");
     Action a5("Mario est en colere attention!","peach",20,"");
     Action a6("Un peu de redbull pour te revigorer!","powerup",20,"");
     Action a7("Trop fort!","exoResolu",20,"");
     Action a8("20/20!","bonneNote",20,"");
-    Action a9("Merci ChatGPT","triche",20,"");
+    Action a9("Merci ChatGPT","triche",-20,"");
+    
     vector<Action> actions= {a1,a2,a3,a4,a5,a6,a7,a8,a9};
 
     vector<Monstre> monstres = CreationMonstres(actions);
@@ -339,6 +344,7 @@ int main(){
     cin >> nom;
     Joueur j(nom); 
     j.Afficher();
+    j.AfficherInventaire();
     int a=-1;
     bool perdu=false;
     while(a!=0)
@@ -359,13 +365,14 @@ int main(){
         while((a!=0 && !perdu)||(a!=0 && nbVictoires!=monstres.size())||(a!=0 && nbEpargne!=monstres.size())||(a!=0  && nbEpargne+nbVictoires!=monstres.size()))
         {
             cout<<"======================================="<<endl;
-            cout<<"Menu : \ntaper 1 pour afficher tes stats \ntaper 2 pour afficher ton inventaire\ntaper 3 pour demarrer le combat contre un monstre\ntaper 0 pour sortir\n>";
+            cout<<"Menu : \ntaper 1 pour afficher tes stats \ntaper 2 pour afficher ton inventaire\ntaper 3 pour demarrer le combat contre un monstre\ntaper 4 pour afficher le bestiaire\ntaper 0 pour sortir\n>";
             cin>>a;
             switch (a) {
                 case 1: {  
                     j.Afficher();
                     cout<<"Nombre de monstres tues: "<<nbVictoires<<endl;
                     cout<<"Nombre de monstres epargnes: "<<nbEpargne<<endl;
+                    cout<<"Nombre de victoire: "<<nbVictoires+nbEpargne<<endl;
                     break;
                 } 
 
@@ -427,6 +434,26 @@ int main(){
                         a=0;
                     }
                 
+                    break;
+                }
+                case 4:
+                {
+                    int nbAfficher = 0;
+                    for(Monstre m : monstres){                        
+                        if (m.getResultatCombat()==-1 ||m.getResultatCombat()==1){
+                            m.afficher();
+                            if(m.getResultatCombat()==-1){
+                                cout<<"Tue"<<endl;
+                            }
+                            else{
+                                cout<<"epargne"<<endl;
+                            }
+                            nbAfficher++;
+                        }                        
+                    }
+                    if(nbAfficher==0){
+                            cout<<"Aucun Monstre encore tue ou epargne"<<endl;
+                        }
                     break;
                 }
                 case 0:
