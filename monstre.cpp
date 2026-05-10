@@ -59,25 +59,70 @@ void Monstre::setActions(Action act){
     actions.push_back(act);
 }
 
-void Monstre::afficherActions(){
-    cout<<"Actions : "<<endl;
-    int n = 0;
-    if(type == "BOSS"){
-        n = 4;
+//void Monstre::afficherActions(){
+//    cout<<"Actions : "<<endl;
+//    int n = 0;
+//    if(type == "BOSS"){
+//        n = 4;
+//    }
+//    else if(type == "MINIBOSS"){
+//        n = 3;
+//    }
+//    else if(type == "NORMAL"){
+//        n = 2;
+//    }
+//    cout<<left<<setw(15)<<"numero"
+//        <<left<<setw(15)<<"nom"
+//        <<left<<setw(15)<<"Text drole"<<endl;
+//        cout << "----------------------------------------" << endl;
+//    for(int i = 0; i < n; i++){
+//        
+//        cout<<left<<setw(15)<<i+1;
+//        actions[i].afficher();
+//    }
+//}
+
+MonstreNormal::MonstreNormal(std::string nom, int mercy, int resultat_combat) 
+    : Monstre(nom, "NORMAL", mercy, resultat_combat) {} 
+
+void MonstreNormal::afficherActions() {
+    std::cout << "Actions : \n";
+    std::cout << std::left << std::setw(15) << "numero" << std::left << std::setw(15) << "nom" << "Text drole\n";
+    std::cout << "----------------------------------------\n";
+    
+    int maxActions = std::min(2, (int)actions.size()); 
+    for(int i = 0; i < maxActions; i++) {
+        std::cout << std::left << std::setw(15) << i+1;
+        actions[i].afficher();
     }
-    else if(type == "MINIBOSS"){
-        n = 3;
+}
+
+MonstreMiniboss::MonstreMiniboss(std::string nom, int mercy, int resultat_combat) 
+    : Monstre(nom, "MINIBOSS", mercy, resultat_combat) {}
+
+void MonstreMiniboss::afficherActions() {
+    std::cout << "Actions : \n";
+    std::cout << std::left << std::setw(15) << "numero" << std::left << std::setw(15) << "nom" << "Text drole\n";
+    std::cout << "----------------------------------------\n";
+    
+    int maxActions = std::min(3, (int)actions.size());
+    for(int i = 0; i < maxActions; i++) {
+        std::cout << std::left << std::setw(15) << i+1;
+        actions[i].afficher();
     }
-    else if(type == "NORMAL"){
-        n = 2;
-    }
-    cout<<left<<setw(15)<<"numero"
-        <<left<<setw(15)<<"nom"
-        <<left<<setw(15)<<"Text drole"<<endl;
-        cout << "----------------------------------------" << endl;
-    for(int i = 0; i < n; i++){
-        
-        cout<<left<<setw(15)<<i+1;
+}
+
+MonstreBoss::MonstreBoss(std::string nom, int mercy, int resultat_combat) 
+    : Monstre(nom, "BOSS", mercy, resultat_combat) {}
+
+void MonstreBoss::afficherActions() {
+    std::cout << "Actions : \n";
+    std::cout << std::left << std::setw(15) << "numero" << std::left << std::setw(15) << "nom" << "Text drole\n";
+    std::cout << "----------------------------------------\n";
+    
+    int maxActions = std::min(4, (int)actions.size());
+    for(int i = 0; i < maxActions; i++) {
+        std::cout << std::left << std::setw(15) << i+1;
         actions[i].afficher();
     }
 }

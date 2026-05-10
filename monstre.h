@@ -10,7 +10,7 @@ using  namespace std;
 
 
 class Monstre : public Entity{
-    private:
+    protected:
         int id;
         string nom;
         string type;
@@ -20,8 +20,10 @@ class Monstre : public Entity{
         int HP_initial;
     public:
         Monstre(string nom, string type, int mercy, int resultat_combat);
-        void afficher();
-        void afficherActions();
+        virtual ~Monstre() = default;
+        virtual void afficherActions() = 0;
+
+        void afficher();        
         string getNom();
         string getType();
         int getMercy();
@@ -32,4 +34,22 @@ class Monstre : public Entity{
         void setActions(Action act);
         int getHP_initial();
         void setHP_initial(int hp);
+};
+
+class MonstreNormal : public Monstre {
+    public:
+        MonstreNormal(string nom, int mercy, int resultat_combat);
+        void afficherActions() override;
+};
+
+class MonstreMiniboss : public Monstre {
+    public:
+        MonstreMiniboss(string nom, int mercy, int resultat_combat);
+        void afficherActions() override;
+};
+
+class MonstreBoss : public Monstre {
+    public:
+        MonstreBoss(string nom, int mercy, int resultat_combat);
+        void afficherActions() override;
 };
