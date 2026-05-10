@@ -8,8 +8,8 @@
 #include <sstream>
 #include <random>
 
-vector<Monstre> CreationMonstres(vector<Action> vectActions){
-    vector<Monstre> monstres;
+vector<Monstre*> CreationMonstres(vector<Action> vectActions){
+    vector<Monstre*> monstres;
     int compteur=0;
     ifstream fichier("monstres.csv");
     if (!fichier.is_open()) {
@@ -30,6 +30,9 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
 
         int nbActions = 0;
         vector<string> acts;
+        
+        Monstre* m = nullptr;
+
         if(type=="NORMAL"){
             nbActions = 2;
             string act1, act2;
@@ -37,6 +40,7 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
             getline(ss, act2, ',');
             acts.push_back(act1);
             acts.push_back(act2);
+            m = new MonstreNormal(nom, 0, 0); 
         }
         else if(type=="MINIBOSS"){
             nbActions = 3;
@@ -47,6 +51,7 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
             acts.push_back(act1);            
             acts.push_back(act2);
             acts.push_back(act3);
+            m = new MonstreMiniboss(nom, 0, 0);
         }
         else{
             nbActions = 4;
@@ -59,39 +64,37 @@ vector<Monstre> CreationMonstres(vector<Action> vectActions){
             acts.push_back(act2);            
             acts.push_back(act3);
             acts.push_back(act4);
+            m = new MonstreBoss(nom, 0, 0);
         }        
 
-        Monstre m(nom, type, 0, 0);
         for(int i = 0; i<nbActions; i++){
             for(int j = 0; j<vectActions.size(); j++){
                 if(vectActions[j].getNom()==acts[i]){
-                    m.setActions(vectActions[j]);
+                    m->setActions(vectActions[j]);
                 }
             }
         } 
 
         try
         {
-            m.set_hp(stoi(hp_str));
-            m.setHP_initial(stoi(hp_str));
-            m.setMercy(stoi(mercy_str));
-            m.set_attaque(stoi(attaque_str));
-            m.set_defense(stoi(defense_str));
+            m->set_hp(stoi(hp_str));
+            m->setHP_initial(stoi(hp_str));
+            m->setMercy(stoi(mercy_str));
+            m->set_attaque(stoi(attaque_str));
+            m->set_defense(stoi(defense_str));
         }
-
         catch(const exception& e)
         {
             std::cerr << e.what() << '\n';
         }   
         
-
         monstres.push_back(m);
     }
 
     return monstres;
 }
 
-void AfficherMenu(Joueur joueur, Monstre monstre)
+void AfficherMenu(Joueur& joueur, Monstre& monstre)
 {
     cout <<"\033[4m"<<joueur.get_nom() << " VS " << monstre.getNom()<<"\033[0m"<<endl;
                 cout<<"HP "<<joueur.get_nom()<<": ";
@@ -336,7 +339,7 @@ int main(){
     
     vector<Action> actions= {a1,a2,a3,a4,a5,a6,a7,a8,a9};
 
-    vector<Monstre> monstres = CreationMonstres(actions);
+    vector<Monstre*> monstres = CreationMonstres(actions);
     AfficherIntro();
     
     cout << "Entrer votre nom > ";
@@ -352,13 +355,13 @@ int main(){
         
         int nbVictoires = 0;
         for (const auto& m : monstres) {
-            if (m.getResultatCombat() == -1) { 
+            if (m->getResultatCombat() == -1) { 
                 nbVictoires++;
             }
         } 
         int nbEpargne = 0;
         for (const auto& m : monstres) {
-            if (m.getResultatCombat() == 1) { 
+            if (m->getResultatCombat() == 1) { 
                 nbEpargne++;
             }
         }
@@ -390,13 +393,13 @@ int main(){
                     uniform_int_distribution<> distrib(0, monstres.size()-1); 
 
                     int index = distrib(gen);
-                    while(monstres[index].getResultatCombat()!=0)
+                    while(monstres[index]->getResultatCombat()!=0)
                     {
                         index=distrib(gen);
                     } 
                     //cout<<index<<endl;
-                    monstres[index].afficher();
-                    bool resultatDefaite = Combat(j, monstres[index]); 
+                    monstres[index]->afficher();
+                    bool resultatDefaite = Combat(j, *monstres[index]); 
                     if(resultatDefaite)
                     {
                         cout<<"Vous avez perdu"<<endl;
@@ -406,7 +409,7 @@ int main(){
                      nbVictoires = 0;
                     for (const auto& m : monstres) 
                     {
-                        if (m.getResultatCombat() == -1) { 
+                        if (m->getResultatCombat() == -1) { 
                             nbVictoires++;
                         }
                     }
@@ -414,7 +417,7 @@ int main(){
 
                      nbEpargne = 0;
                     for (const auto& m : monstres) {
-                        if (m.getResultatCombat() == 1) { 
+                        if (m->getResultatCombat() == 1) { 
                             nbEpargne++;
                         }
                     }
@@ -439,10 +442,10 @@ int main(){
                 case 4:
                 {
                     int nbAfficher = 0;
-                    for(Monstre m : monstres){                        
-                        if (m.getResultatCombat()==-1 ||m.getResultatCombat()==1){
-                            m.afficher();
-                            if(m.getResultatCombat()==-1){
+                    for(Monstre* m : monstres){                        
+                        if (m->getResultatCombat()==-1 ||m->getResultatCombat()==1){
+                            m->afficher();
+                            if(m->getResultatCombat()==-1){
                                 cout<<"Tue"<<endl;
                             }
                             else{
@@ -467,13 +470,8 @@ int main(){
 
             
 
-        }
-            
+        }  
+    }
         
-        
-
-        
-    }     
-        
-        return 0;
+    return 0;
 };
